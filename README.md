@@ -1,5 +1,7 @@
 # Performance Testing framework Gatling Scala #
 
+  ![img_3.png](img_3.png)
+
 
 This repository contains the code for the Gatling Beginners Tutorial course. The course is designed to help you get started with Gatling, and to help you understand the basics of performance testing.
 
