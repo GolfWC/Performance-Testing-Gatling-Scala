@@ -7,7 +7,7 @@ object Engine extends App {
     .resourcesDirectory(IDEPathHelper.resourcesDirectory.toString)
     .resultsDirectory(IDEPathHelper.resultsDirectory.toString)
     .binariesDirectory(IDEPathHelper.mavenBinariesDirectory.toString)
-    .simulationClass("com.myGatlingTest.Computerdatabase") // Specify the simulation class here
+    .simulationClass("com.myGatlingTest.WinApp") // Specify the simulation class here
 
   Gatling.fromMap(props.build)
 }
