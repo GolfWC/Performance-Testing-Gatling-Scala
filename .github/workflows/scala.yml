@@ -36,6 +36,9 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
 
+    - name: Change directory to the project root
+      run: cd gatling-tutorial-master # Update this to the correct path where your pom.xml is located      
+
     - name: Install dependencies
       run: mvn install
 
