@@ -39,5 +39,12 @@ jobs:
     - name: Install dependencies
       run: mvn install
 
+    - name: Set up SBT
+      run: |
+        curl -L -o sbt.zip https://github.com/sbt/sbt/releases/download/v1.5.5/sbt-1.5.5.zip
+        unzip sbt.zip -d $HOME/sbt
+        export PATH=$HOME/sbt/bin:$PATH
+        sbt sbtVersion
+
     - name: Run Gatling tests
       run: mvn gatling:test
