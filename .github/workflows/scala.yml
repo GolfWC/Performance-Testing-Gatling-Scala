@@ -16,17 +16,17 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up JDK 8
+    - name: Set up JDK 11
       uses: actions/setup-java@v2
       with:
-        java-version: '8'
+        java-version: '11'
         distribution: 'adopt'
 
     - name: Set up Scala
       uses: olafurpg/setup-scala@v10
       with:
-        java-version: '8.0.292+10'
-        scala-version: '2.12.8'
+        java-version: '11'
+        scala-version: '2.12.20'
 
     - name: Cache Maven packages
       uses: actions/cache@v2
@@ -36,15 +36,23 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
 
+    - name: Change directory to the project root
+      run: cd gatling-tutorial-master
+
     - name: Install dependencies
       run: mvn install
-
-    - name: Set up SBT
-      run: |
-        curl -L -o sbt.zip https://github.com/sbt/sbt/releases/download/v1.5.5/sbt-1.5.5.zip
-        unzip sbt.zip -d $HOME/sbt
-        export PATH=$HOME/sbt/bin:$PATH
-        sbt sbtVersion
+      working-directory: gatling-tutorial-master
 
     - name: Run Gatling tests
       run: mvn gatling:test
+      working-directory: gatling-tutorial-master
+
+    # - name: Set up SBT
+    #   run: |
+    #     curl -L -o sbt.zip https://github.com/sbt/sbt/releases/download/v1.5.5/sbt-1.5.5.zip
+    #     unzip sbt.zip -d $HOME/sbt
+    #     export PATH=$HOME/sbt/bin:$PATH
+    #     sbt sbtVersion
+
+    # - name: Run Gatling tests
+    #   run: mvn gatling:test
